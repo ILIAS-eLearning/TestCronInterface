@@ -8,13 +8,13 @@ use ILIAS\Plugin\TestCronInterface\Cron\TestCronInterfaceJob;
  * Class ilTestCronInterfacePlugin
  * @author Michael Jansen <mjansen@databay.de>
  */
-class ilTestCronInterfacePlugin extends ilUserInterfaceHookPlugin
+class ilTestCronInterfacePlugin extends ilUserInterfaceHookPlugin implements ilCronJobProvider
 {
     private Container $dic;
 
     public function __construct(
-        \ilDBInterface $db,
-        \ilComponentRepositoryWrite $component_repository,
+        ilDBInterface $db,
+        ilComponentRepositoryWrite $component_repository,
         string $id
     ) {
         global $DIC;
