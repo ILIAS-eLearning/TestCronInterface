@@ -15,16 +15,9 @@ use ilTestCronInterfacePlugin;
  */
 class TestCronInterfaceJob extends ilCronJob
 {
-    /** @var ilTestCronInterfacePlugin */
-    private $plugin;
-    /** @var ilLogger */
-    private $logger;
+    private ilTestCronInterfacePlugin $plugin;
+    private ilLogger $logger;
 
-    /**
-     * OpenBookingsReminder constructor.
-     * @param ilTestCronInterfacePlugin $plugin
-     * @param ilLogger $logger
-     */
     public function __construct(ilTestCronInterfacePlugin $plugin, ilLogger $logger)
     {
         $this->plugin = $plugin;
@@ -35,7 +28,7 @@ class TestCronInterfaceJob extends ilCronJob
     /**
      * @inheritDoc
      */
-    public function getTitle()
+    public function getTitle() : string
     {
         return sprintf("Title Test of: %s", self::class);
     }
@@ -43,7 +36,7 @@ class TestCronInterfaceJob extends ilCronJob
     /**
      * @inheritDoc
      */
-    public function getDescription()
+    public function getDescription() : string
     {
         return sprintf("Description Test of: %s", self::class);
     }
@@ -51,7 +44,7 @@ class TestCronInterfaceJob extends ilCronJob
     /**
      * @inheritDoc
      */
-    public function getId()
+    public function getId() : string
     {
         return 'testcroninterface_job';
     }
@@ -59,7 +52,7 @@ class TestCronInterfaceJob extends ilCronJob
     /**
      * @inheritDoc
      */
-    public function hasAutoActivation()
+    public function hasAutoActivation() : bool
     {
         return true;
     }
@@ -67,7 +60,7 @@ class TestCronInterfaceJob extends ilCronJob
     /**
      * @inheritDoc
      */
-    public function hasFlexibleSchedule()
+    public function hasFlexibleSchedule() : bool
     {
         return true;
     }
@@ -75,7 +68,7 @@ class TestCronInterfaceJob extends ilCronJob
     /**
      * @inheritDoc
      */
-    public function getDefaultScheduleType()
+    public function getDefaultScheduleType() : int
     {
         return ilCronJob::SCHEDULE_TYPE_DAILY;
     }
@@ -83,7 +76,7 @@ class TestCronInterfaceJob extends ilCronJob
     /**
      * @inheritDoc
      */
-    public function getDefaultScheduleValue()
+    public function getDefaultScheduleValue() : int
     {
         return 1;
     }
@@ -91,7 +84,7 @@ class TestCronInterfaceJob extends ilCronJob
     /**
      * @return bool
      */
-    public function isManuallyExecutable()
+    public function isManuallyExecutable() : bool
     {
         return defined('DEVMODE') && (bool) DEVMODE;
     }
@@ -99,7 +92,7 @@ class TestCronInterfaceJob extends ilCronJob
     /**
      * @inheritDoc
      */
-    public function run()
+    public function run() : ilCronJobResult
     {
         $this->logger->info('Started job');
 
