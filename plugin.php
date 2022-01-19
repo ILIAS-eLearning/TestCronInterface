@@ -4,7 +4,7 @@
 /**
  * @author Michael Jansen <mjansen@databay.de>
  */
-$id = 'crsbooking';
+$id = 'tstcroninterface';
 $version = '1.0';
 $ilias_min_version = '8.0';
 $ilias_max_version = '8.999';
