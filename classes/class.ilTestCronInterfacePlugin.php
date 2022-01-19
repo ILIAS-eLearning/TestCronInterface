@@ -10,19 +10,17 @@ use ILIAS\Plugin\TestCronInterface\Cron\TestCronInterfaceJob;
  */
 class ilTestCronInterfacePlugin extends ilUserInterfaceHookPlugin
 {
-    /** @var Container */
-    private $dic;
+    private Container $dic;
 
-    /**
-     * ilTestCronInterfacePlugin constructor.
-     */
-    public function __construct()
-    {
+    public function __construct(
+        \ilDBInterface $db,
+        \ilComponentRepositoryWrite $component_repository,
+        string $id
+    ) {
         global $DIC;
 
         $this->dic = $DIC;
-
-        parent::__construct();
+        parent::__construct($db, $component_repository, $id);
     }
 
     /**
@@ -42,7 +40,7 @@ class ilTestCronInterfacePlugin extends ilUserInterfaceHookPlugin
     /**
      * @inheritDoc
      */
-    public function getPluginName()
+    public function getPluginName() : string
     {
         $class = substr(self::class, 2);
         $pluginPosition = strrpos($class, 'Plugin');
