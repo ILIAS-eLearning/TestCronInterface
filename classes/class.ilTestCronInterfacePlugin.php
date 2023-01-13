@@ -23,10 +23,7 @@ class ilTestCronInterfacePlugin extends ilUserInterfaceHookPlugin implements ilC
         parent::__construct($db, $component_repository, $id);
     }
 
-    /**
-     * @inheritdoc
-     */
-    protected function init()
+    protected function init() : void
     {
         parent::init();
         $this->registerAutoloader();
