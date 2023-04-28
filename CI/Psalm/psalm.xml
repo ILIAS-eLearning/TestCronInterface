@@ -5,11 +5,12 @@
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config ../../vendor/vimeo/psalm/config.xsd"
     errorBaseline="./CI/Psalm/psalm-baseline.xml"
+    resolveFromConfigFile="false"
 >
     <projectFiles>
         <directory name="./classes" />
         <ignoreFiles>
-            <directory name="vendor" />
+            <directory name="./vendor" />
         </ignoreFiles>
     </projectFiles>
 
@@ -34,7 +35,6 @@
         <MissingReturnType errorLevel="info" />
         <MissingPropertyType errorLevel="info" />
         <InvalidDocblock errorLevel="info" />
-        <MisplacedRequiredParam errorLevel="info" />
 
         <PropertyNotSetInConstructor errorLevel="info" />
         <MissingConstructor errorLevel="info" />
