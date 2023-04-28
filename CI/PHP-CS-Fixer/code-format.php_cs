@@ -12,15 +12,11 @@ $finder = PhpCsFixer\Finder::create()
 	])
 ;
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
 	->setRules([
-        '@PSR2' => true,
+        '@PSR12' => true,
         'strict_param' => false,
-        'cast_spaces' => true,
         'concat_space' => ['spacing' => 'one'],
-        'unary_operator_spaces' => true,
-        'function_typehint_space' => true,
-        'return_type_declaration' => ['space_before' => 'one'],
-        'binary_operator_spaces' => true
+        'function_typehint_space' => true
 	])
 	->setFinder($finder);

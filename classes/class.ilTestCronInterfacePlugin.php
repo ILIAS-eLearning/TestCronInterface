@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /* Copyright (c) 1998-2021 ILIAS open source, Extended GPL, see docs/LICENSE */
 
 use ILIAS\DI\Container;
@@ -23,13 +25,13 @@ class ilTestCronInterfacePlugin extends ilUserInterfaceHookPlugin implements ilC
         parent::__construct($db, $component_repository, $id);
     }
 
-    protected function init() : void
+    protected function init(): void
     {
         parent::init();
         $this->registerAutoloader();
     }
 
-    public function registerAutoloader() : void
+    public function registerAutoloader(): void
     {
         require_once __DIR__ . '/../vendor/autoload.php';
     }
@@ -37,7 +39,7 @@ class ilTestCronInterfacePlugin extends ilUserInterfaceHookPlugin implements ilC
     /**
      * @inheritDoc
      */
-    public function getPluginName() : string
+    public function getPluginName(): string
     {
         $class = substr(self::class, 2);
         $pluginPosition = strrpos($class, 'Plugin');
@@ -48,7 +50,7 @@ class ilTestCronInterfacePlugin extends ilUserInterfaceHookPlugin implements ilC
     /**
      * @inheritDoc
      */
-    public function getCronJobInstances() : array
+    public function getCronJobInstances(): array
     {
         return [
             new TestCronInterfaceJob($this, $this->dic->logger()->root()),
@@ -58,7 +60,7 @@ class ilTestCronInterfacePlugin extends ilUserInterfaceHookPlugin implements ilC
     /**
      * @inheritDoc
      */
-    public function getCronJobInstance(string $jobId) : ilCronJob
+    public function getCronJobInstance(string $jobId): ilCronJob
     {
         foreach ($this->getCronJobInstances() as $cronJob) {
             if ($jobId === $cronJob->getId()) {
