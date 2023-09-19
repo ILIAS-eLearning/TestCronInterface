@@ -7,7 +7,7 @@
  */
 $id = 'tstcroninterface';
 $version = '1.0';
-$ilias_min_version = '9.0';
-$ilias_max_version = '9.999';
+$ilias_min_version = '10.0';
+$ilias_max_version = '10.999';
 $responsible = 'Michael Jansen';
 $responsible_mail = 'mjansen@databay.de';
