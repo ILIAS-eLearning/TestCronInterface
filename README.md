@@ -18,8 +18,8 @@ in this document are to be interpreted as described in
 
 ## Requirements
 
-* PHP: [![Minimum PHP Version](https://img.shields.io/badge/Minimum_PHP-7.4.x-blue.svg)](https://php.net/) [![Maximum PHP Version](https://img.shields.io/badge/Maximum_PHP-8.0.x-blue.svg)](https://php.net/)
-* ILIAS: [![Minimum ILIAS Version](https://img.shields.io/badge/Minimum_ILIAS-8.x-orange.svg)](https://ilias.de/) [![Maximum ILIAS Version](https://img.shields.io/badge/Maximum_ILIAS-8.x-orange.svg)](https://ilias.de/)
+* PHP: [![Minimum PHP Version](https://img.shields.io/badge/Minimum_PHP-8.2.x-blue.svg)](https://php.net/) [![Maximum PHP Version](https://img.shields.io/badge/Maximum_PHP-8.3.x-blue.svg)](https://php.net/)
+* ILIAS: [![Minimum ILIAS Version](https://img.shields.io/badge/Minimum_ILIAS-11.x-orange.svg)](https://ilias.de/) [![Maximum ILIAS Version](https://img.shields.io/badge/Maximum_ILIAS-8.x-orange.svg)](https://ilias.de/)
 
 ## Installation
 
@@ -28,7 +28,7 @@ This plugin MUST be installed as a
 
 The files MUST be saved in the following directory:
 
-	<ILIAS>/Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/TestCronInterface
+	<ILIAS>/components/TestCronInterface
 
 Correct file and folder permissions MUST be
 ensured by the responsible system administrator.

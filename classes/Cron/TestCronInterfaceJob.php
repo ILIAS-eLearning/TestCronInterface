@@ -1,15 +1,17 @@
 <?php
 
-declare(strict_types=1);
 /* Copyright (c) 1998-2021 ILIAS open source, Extended GPL, see docs/LICENSE */
+
+declare(strict_types=1);
 
 namespace ILIAS\Plugin\TestCronInterface\Cron;
 
 use ilCronJob;
 use ilCronJobResult;
 use ilLogger;
-use ilTestCronInterfacePlugin;
 use ILIAS\Cron\Schedule\CronJobScheduleType;
+use ILIAS\Language\Language;
+use ILIAS\Logging\LoggerFactory;
 
 /**
  * Class TestCronInterfaceJob
@@ -18,16 +20,6 @@ use ILIAS\Cron\Schedule\CronJobScheduleType;
  */
 class TestCronInterfaceJob extends ilCronJob
 {
-    private ilTestCronInterfacePlugin $plugin;
-    private ilLogger $logger;
-
-    public function __construct(ilTestCronInterfacePlugin $plugin, ilLogger $logger)
-    {
-        $this->plugin = $plugin;
-        $this->logger = $logger;
-    }
-
-
     /**
      * @inheritDoc
      */
@@ -97,13 +89,14 @@ class TestCronInterfaceJob extends ilCronJob
      */
     public function run(): ilCronJobResult
     {
-        $this->logger->info('Started job');
+        $logger = $this->logger_factory::getRootLogger();
+        $logger->info('Started job');
 
         $result = new ilCronJobResult();
         $result->setStatus(ilCronJobResult::STATUS_OK);
         $result->setMessage('Successfully finished job');
 
-        $this->logger->info($result->getMessage());
+        $logger->info($result->getMessage());
 
         return $result;
     }
