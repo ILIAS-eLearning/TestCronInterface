@@ -1,7 +1,22 @@
 <?php
 
+/**
+ * This file is part of ILIAS, a powerful learning management system
+ * published by ILIAS open source e-Learning e.V.
+ *
+ * ILIAS is licensed with the GPL-3.0,
+ * see https://www.gnu.org/licenses/gpl-3.0.en.html
+ * You should have received a copy of said license along with the
+ * source code, too.
+ *
+ * If this is not the case or you just want to try ILIAS, you'll find
+ * us at:
+ * https://www.ilias.de
+ * https://github.com/ILIAS-eLearning
+ *
+ *********************************************************************/
+
 declare(strict_types=1);
-/* Copyright (c) 1998-2021 ILIAS open source, Extended GPL, see docs/LICENSE */
 
 namespace ILIAS\Plugin\TestCronInterface\Cron;
 
@@ -11,11 +26,6 @@ use ilLogger;
 use ilTestCronInterfacePlugin;
 use ILIAS\Cron\Schedule\CronJobScheduleType;
 
-/**
- * Class TestCronInterfaceJob
- * @package ILIAS\Plugin\TestCronInterface\Cron
- * @author Michael Jansen <mjansen@databay.de>
- */
 class TestCronInterfaceJob extends ilCronJob
 {
     private ilTestCronInterfacePlugin $plugin;
@@ -28,73 +38,46 @@ class TestCronInterfaceJob extends ilCronJob
     }
 
 
-    /**
-     * @inheritDoc
-     */
     public function getTitle(): string
     {
         return sprintf("Title Test of: %s", self::class);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getDescription(): string
     {
         return sprintf("Description Test of: %s", self::class);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getId(): string
     {
         return 'testcroninterface_job';
     }
 
-    /**
-     * @inheritDoc
-     */
     public function hasAutoActivation(): bool
     {
         return true;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function hasFlexibleSchedule(): bool
     {
         return true;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getDefaultScheduleType(): \ILIAS\Cron\Schedule\CronJobScheduleType
     {
         return \ILIAS\Cron\Schedule\CronJobScheduleType::SCHEDULE_TYPE_DAILY;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getDefaultScheduleValue(): int
     {
         return 1;
     }
 
-    /**
-     * @return bool
-     */
     public function isManuallyExecutable(): bool
     {
         return defined('DEVMODE') && (bool) DEVMODE;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function run(): ilCronJobResult
     {
         $this->logger->info('Started job');
