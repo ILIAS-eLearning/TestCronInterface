@@ -20,13 +20,13 @@ declare(strict_types=1);
 
 namespace ILIAS\Plugin\TestCronInterface\Cron;
 
-use ilCronJob;
-use ilCronJobResult;
 use ilLogger;
 use ilTestCronInterfacePlugin;
-use ILIAS\Cron\Schedule\CronJobScheduleType;
+use ILIAS\Cron\CronJob;
+use ILIAS\Cron\Job\Schedule\JobScheduleType;
+use ILIAS\Cron\Job\JobResult;
 
-class TestCronInterfaceJob extends ilCronJob
+class TestCronInterfaceJob extends CronJob
 {
     private ilTestCronInterfacePlugin $plugin;
     private ilLogger $logger;
@@ -40,12 +40,12 @@ class TestCronInterfaceJob extends ilCronJob
 
     public function getTitle(): string
     {
-        return sprintf("Title Test of: %s", self::class);
+        return \sprintf('Title Test of: %s', self::class);
     }
 
     public function getDescription(): string
     {
-        return sprintf("Description Test of: %s", self::class);
+        return \sprintf('Description Test of: %s', self::class);
     }
 
     public function getId(): string
@@ -63,9 +63,9 @@ class TestCronInterfaceJob extends ilCronJob
         return true;
     }
 
-    public function getDefaultScheduleType(): \ILIAS\Cron\Schedule\CronJobScheduleType
+    public function getDefaultScheduleType(): JobScheduleType
     {
-        return \ILIAS\Cron\Schedule\CronJobScheduleType::SCHEDULE_TYPE_DAILY;
+        return JobScheduleType::DAILY;
     }
 
     public function getDefaultScheduleValue(): int
@@ -75,15 +75,15 @@ class TestCronInterfaceJob extends ilCronJob
 
     public function isManuallyExecutable(): bool
     {
-        return defined('DEVMODE') && (bool) DEVMODE;
+        return \defined('DEVMODE') && (bool) DEVMODE;
     }
 
-    public function run(): ilCronJobResult
+    public function run(): JobResult
     {
         $this->logger->info('Started job');
 
-        $result = new ilCronJobResult();
-        $result->setStatus(ilCronJobResult::STATUS_OK);
+        $result = new JobResult();
+        $result->setStatus(JobResult::STATUS_OK);
         $result->setMessage('Successfully finished job');
 
         $this->logger->info($result->getMessage());
