@@ -21,7 +21,7 @@ declare(strict_types=1);
 use ILIAS\DI\Container;
 use ILIAS\Plugin\TestCronInterface\Cron\TestCronInterfaceJob;
 
-class ilTestCronInterfacePlugin extends ilUserInterfaceHookPlugin implements ilCronJobProvider
+class ilTestCronInterfacePlugin extends ilUserInterfaceHookPlugin implements \ILIAS\Cron\Job\JobProvider
 {
     private Container $dic;
 
@@ -62,7 +62,7 @@ class ilTestCronInterfacePlugin extends ilUserInterfaceHookPlugin implements ilC
         ];
     }
 
-    public function getCronJobInstance(string $jobId): ilCronJob
+    public function getCronJobInstance(string $jobId): \ILIAS\Cron\CronJob
     {
         foreach ($this->getCronJobInstances() as $cronJob) {
             if ($jobId === $cronJob->getId()) {
