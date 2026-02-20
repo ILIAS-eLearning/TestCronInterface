@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.9.0@8b9ad1eb9e8b7d3101f949291da2b9f7767cd163">
+<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
   <file src="classes/Cron/TestCronInterfaceJob.php">
     <UndefinedClass>
-      <code>ilCronJob</code>
+      <code><![CDATA[CronJob]]></code>
     </UndefinedClass>
   </file>
   <file src="classes/class.ilTestCronInterfacePlugin.php">
     <UndefinedClass>
-      <code>ilCronJobProvider</code>
-      <code>ilUserInterfaceHookPlugin</code>
+      <code><![CDATA[\ILIAS\Cron\Job\JobProvider]]></code>
+      <code><![CDATA[ilUserInterfaceHookPlugin]]></code>
     </UndefinedClass>
   </file>
   <file src="classes/class.ilTestCronInterfaceUIHookGUI.php">
     <UndefinedClass>
-      <code>ilUIHookPluginGUI</code>
+      <code><![CDATA[ilUIHookPluginGUI]]></code>
     </UndefinedClass>
   </file>
 </files>
