@@ -1,6 +1,6 @@
 {
   "require": {
-    "php": ">=8.3 <8.4"
+    "php": ">=8.4 <8.6"
   },
   "autoload": {
     "psr-4" : { "ILIAS\\Plugin\\TestCronInterface\\" : "./classes" },
@@ -9,8 +9,8 @@
   },
   "require-dev": {
     "captainhook/plugin-composer": "^5.3",
-    "vimeo/psalm": "^5.9.0",
-    "friendsofphp/php-cs-fixer": "^3.40"
+    "vimeo/psalm": "^6.17",
+    "friendsofphp/php-cs-fixer": "^3.94"
   },
   "config": {
     "allow-plugins": {

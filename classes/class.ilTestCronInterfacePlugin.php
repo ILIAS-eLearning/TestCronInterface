@@ -18,12 +18,14 @@
 
 declare(strict_types=1);
 
+use ILIAS\Cron\CronJob;
+use ILIAS\Cron\Job\JobProvider;
 use ILIAS\DI\Container;
 use ILIAS\Plugin\TestCronInterface\Cron\TestCronInterfaceJob;
 
-class ilTestCronInterfacePlugin extends ilUserInterfaceHookPlugin implements \ILIAS\Cron\Job\JobProvider
+class ilTestCronInterfacePlugin extends ilUserInterfaceHookPlugin implements JobProvider
 {
-    private Container $dic;
+    private readonly Container $dic;
 
     public function __construct(
         ilDBInterface $db,
@@ -55,6 +57,9 @@ class ilTestCronInterfacePlugin extends ilUserInterfaceHookPlugin implements \IL
         return substr($class, 0, $pluginPosition);
     }
 
+    /**
+     * @return list<CronJob>
+     */
     public function getCronJobInstances(): array
     {
         return [
@@ -62,14 +67,17 @@ class ilTestCronInterfacePlugin extends ilUserInterfaceHookPlugin implements \IL
         ];
     }
 
-    public function getCronJobInstance(string $jobId): \ILIAS\Cron\CronJob
+    public function getCronJobInstance(string $jobId): CronJob
     {
-        foreach ($this->getCronJobInstances() as $cronJob) {
-            if ($jobId === $cronJob->getId()) {
-                return $cronJob;
-            }
+        $job = array_find(
+            $this->getCronJobInstances(),
+            static fn(CronJob $job): bool => $jobId === $job->getId()
+        );
+
+        if ($job === null) {
+            throw new OutOfBoundsException(\sprintf("Could not find any job for id '%s'", $jobId));
         }
 
-        throw new OutOfBoundsException(sprintf("Could not find any job for id '%s'", $jobId));
+        return $job;
     }
 }

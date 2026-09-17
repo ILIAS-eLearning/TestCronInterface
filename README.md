@@ -18,8 +18,8 @@ in this document are to be interpreted as described in
 
 ## Requirements
 
-* PHP: [![Minimum PHP Version](https://img.shields.io/badge/Minimum_PHP-8.2.x-blue.svg)](https://php.net/) [![Maximum PHP Version](https://img.shields.io/badge/Maximum_PHP-8.3.x-blue.svg)](https://php.net/)
-* ILIAS: [![Minimum ILIAS Version](https://img.shields.io/badge/Minimum_ILIAS-10.x-orange.svg)](https://ilias.de/) [![Maximum ILIAS Version](https://img.shields.io/badge/Maximum_ILIAS-10.x-orange.svg)](https://ilias.de/)
+* PHP: [![Minimum PHP Version](https://img.shields.io/badge/Minimum_PHP-8.4.x-blue.svg)](https://php.net/) [![Maximum PHP Version](https://img.shields.io/badge/Maximum_PHP-8.5.x-blue.svg)](https://php.net/)
+* ILIAS: [![Minimum ILIAS Version](https://img.shields.io/badge/Minimum_ILIAS-12.x-orange.svg)](https://ilias.de/) [![Maximum ILIAS Version](https://img.shields.io/badge/Maximum_ILIAS-12.x-orange.svg)](https://ilias.de/)
 
 ## Installation
 

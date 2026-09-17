@@ -28,15 +28,11 @@ use ILIAS\Cron\Job\JobResult;
 
 class TestCronInterfaceJob extends CronJob
 {
-    private ilTestCronInterfacePlugin $plugin;
-    private ilLogger $logger;
-
-    public function __construct(ilTestCronInterfacePlugin $plugin, ilLogger $logger)
-    {
-        $this->plugin = $plugin;
-        $this->logger = $logger;
+    public function __construct(
+        private readonly ilTestCronInterfacePlugin $plugin,
+        private readonly ilLogger $logger,
+    ) {
     }
-
 
     public function getTitle(): string
     {
@@ -68,9 +64,9 @@ class TestCronInterfaceJob extends CronJob
         return JobScheduleType::DAILY;
     }
 
-    public function getDefaultScheduleValue(): int
+    public function getDefaultScheduleValue(): ?int
     {
-        return 1;
+        return null;
     }
 
     public function isManuallyExecutable(): bool
